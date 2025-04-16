@@ -46,7 +46,7 @@ CARD_NUMBER=$(echo "$RENDERNODE" | grep -oP '(?<=renderD)\d+')
 CARD_DEVICE="/dev/dri/card$((CARD_NUMBER - 128))"
 
 if [ ! -c "$CARD_DEVICE" ]; then
-  if mknod "$CARD_DEVICE" c 226 $((CARD_NUMBER - 128)); then
+  if mknod "$CARD_DEVICE" c 226 $((CARD_NUMBER - 127)); then
     chmod 666 "$CARD_DEVICE"
   fi
 fi
